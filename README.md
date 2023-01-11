@@ -8,4 +8,6 @@
 6. **C-Pointers,arrays and strings**
 7. **C-Even more pointers, arrays and strings**
 8. **C-Recursion**
-
+9. **C-Static Libraries**
+10. **C-argc, argv**
+11. **C-malloc, free**
