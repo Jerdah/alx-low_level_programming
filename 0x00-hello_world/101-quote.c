@@ -4,7 +4,7 @@
 /**
  * main - Entry point
  *
- * Description: A C program that prints the specified message to standard error.
+ * Description: A C program that prints the exact message to standard error.
  *
  * Return: Always 1 (Standard Error)
  */
