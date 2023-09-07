@@ -3,7 +3,7 @@
 /**
  * main - Entry point
  *
- * Description: A C program that prints exactly a given set of words using the put function
+ * Description: A C program that prints given words using the put function
  *
  * Return: Always 0 (Success)
 */
