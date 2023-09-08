@@ -12,16 +12,15 @@ int main(void)
 {
 	char letter;
 
-	for (letter = 'a'; letter <= 'z' || letter <= 'Z'; letter++)
+	for (letter = 'a'; letter <= 'z'; letter++)
 	{
 		putchar(letter);
-
-		if (letter == 'z')
-		{
-			letter = 'A' - 1;
-		}
 	}
 
+	for (letter = 'A'; letter <= 'Z'; letter++)
+	{
+		putchar(letter);
+	}
 	putchar('\n');
 
 	return (0);
