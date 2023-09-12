@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * times_table -function prints the 9 oid times_table
+ * times_table -function prints the 9 times_table
  */
 
 void times_table(void)
@@ -21,15 +21,25 @@ void times_table(void)
 				_putchar(' ');
 
 				if (result < 10)
+				{
 					_putchar(' ');
 			}
+			}
 			if (result >= 10)
+			{
 				_putchar(result / 10 + '0');
+			}
+			else
+			{
+				_putchar(' ');
+			}
 
 			_putchar(result % 10 + '0');
 
 			if (column == 9)
+			{
 				_putchar('\n');
+			}
 		}
 	}
 }
