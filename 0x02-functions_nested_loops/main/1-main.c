@@ -3,7 +3,7 @@
 /**
  * main - Entry point
  *
- * Description: check the code for 1-alphabet.c
+ * Description: check the code for print_alphabet function
  *
  * Return: Always 0 (Success)
 */
