@@ -1,10 +1,8 @@
 #include "main.h"
 /**
- * add - sums up two integers
- * 
+ * add - sums up two integers* 
  * @a: this is the first term
  * @b: this is the second term
- *  
  * Return: output of addition of a and b
  */
 
