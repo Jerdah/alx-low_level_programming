@@ -2,9 +2,9 @@
 
 /**
  * mul - multiplication function
- *@a: integer
- *@b: integer
- *Return: no 0
+ *@a: first integer in multiplication
+ *@b: second integer in multiplication
+ *Return: result of (a*b)
  */
 
 int mul(int a, int b)
