@@ -1,41 +1,43 @@
 ## C Programming 
 
-#### 0. [0x00-hello_world](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x00-hello_world) -> C-Hello, World
+#### 0. [0x00-hello_world](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x00-hello_world) 
 
-#### 1. [0x01-variables_if_else_while](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x01-variables_if_else_while) -> C-Variables, if, else, while
+#### 1. [0x01-variables_if_else_while](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x01-variables_if_else_while) 
 
-#### 2. [0x02-functions_nested_loops](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x02-functions_nested_loops) -> C-Functions, nested loops
+#### 2. [0x02-functions_nested_loops](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x02-functions_nested_loops) 
 
-#### 3. [0x03-debugging](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x03-debugging) -> C-Debugging
+#### 3. [0x03-debugging](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x03-debugging) 
 
-#### 4. [0x04-more_functions_nested_loops](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x04-more_functions_nested_loops) -> C-More functions, more nested loops
+#### 4. [0x04-more_functions_nested_loops](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x04-more_functions_nested_loops) 
 
-#### 5. [0x05-pointers_arrays_strings](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x05-pointers_arrays_strings) -> C-Pointers,arrays and strings
+#### 5. [0x05-pointers_arrays_strings](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x05-pointers_arrays_strings) 
 
-#### 6. [0x06-pointers_arrays_strings](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x06-pointers_arrays_strings) -> C-Even more pointers, arrays and strings
+#### 6. [0x06-pointers_arrays_strings](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x06-pointers_arrays_strings) 
 
-#### 7. [0x07-pointers_arrays_strings](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x07-pointers_arrays_strings) -> 
+#### 7. [0x07-pointers_arrays_strings](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x07-pointers_arrays_strings)  
 
-#### 8.  C-Recursion
+#### 8. [0x08-recursion](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x08-recursion)
 
-#### 8. []() -> C-Static Libraries
+#### 9. [0x09-static_libraries](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x09-static_libraries) 
 
-#### 9. []() -> C-argc, argv
+#### 10. [0x0A-argc_argv](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x0A-argc_argv)
 
-#### 10. []() -> C-malloc, free
+#### 11. [0x0B-malloc_free](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x0B-malloc_free) 
 
-#### 11. []() -> C-More malloc, free
+#### 12. [0x0C-more_malloc_free](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x0C-more_malloc_free) 
 
-#### 12. []() -> C-Preprocessor
+#### 13. [0x0D-preprocessor](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x0D-preprocessor) 
 
-#### 13. []() -> C-Structures, typedef
+#### 14. [0x0E-structures_typedef](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x0E-structures_typedef) 
 
-#### 14. []() -> C-Function pointers
+#### 15. [0x0F-function_pointers](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x0F-function_pointers) 
 
-#### 15. []() -> C-Variadic functions
+#### 16. [0x10-variadic_functions](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x10-variadic_functions) 
 
-#### 16. []() -> C-Structures, typedef
+#### 17. [0x12-singly_linked_lists](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x12-singly_linked_lists) 
 
-#### 17. []() -> C-printf
+#### 18. [0x13-more_singly_linked_lists](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x13-more_singly_linked_lists) 
 
-#### 18. []() -> C-Singly linked lists
+#### 19. [0x14-bit_manipulation](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x14-bit_manipulation)
+
+#### 20. [0x15-file_io](https://github.com/Jerdah/alx-low_level_programming/tree/master/0x15-file_io) 
