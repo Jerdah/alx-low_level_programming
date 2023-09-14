@@ -1,5 +1,3 @@
-#include <ctype.h>
-
 /**
  * _isupper - function block
  * Description: check for uppercase
@@ -13,5 +11,8 @@ int a = 0;
 
 if (c >= 65 && c <= 90)
 a = 1;
+b =0;
 return (a);
+else
+return (b);
 }
