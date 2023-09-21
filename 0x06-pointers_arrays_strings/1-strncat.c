@@ -1,14 +1,15 @@
 #include "main.h"
 
 /**
- * _strcat - concatenates the destination string and the source string, and
- *	the result is stored in the destination string.
+ * _strncat - concatenates destination and source strings but uses n bytes
+ * 	from source string; source string doesn't need to be null-terminated
+ * 	if it contains n or more bytes
  * @dest: destination string
  * @src: source string
  *
  * Return: a pointer to the resulting string dest
  */
-char *_strcat(char *dest, char *src)
+char *_strncat(char *dest, char *src, int n)
 {
 	int dest_str_length = 0;
 	int src_str_length = 0;
@@ -18,20 +19,14 @@ char *_strcat(char *dest, char *src)
 		dest_str_length++;
 	}
 
-	do
-
+	while (src[src_str_length] != '\0' && src_str_length < n)
 	{
 		dest[dest_str_length] = src[src_str_length];
 		dest_str_length++;
 		src_str_length++;
 	}
 
-	while (src[src_str_length - 1] != '\0');
-
-	if (dest_str_length > 0)
-	{
-		dest[dest_str_length] = '\0';
-	}
+	dest[dest_str_length] = '\0';
 
 	return (dest);
 }
