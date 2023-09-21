@@ -2,10 +2,11 @@
 
 /**
  * _strncat - concatenates destination and source strings but uses n bytes
- * 	from source string; source string doesn't need to be null-terminated
- * 	if it contains n or more bytes
+ * from source string; source string doesn't need to be null-terminated
+ * if it contains n or more bytes
  * @dest: destination string
  * @src: source string
+ * @n: most bytes from src
  *
  * Return: a pointer to the resulting string dest
  */
