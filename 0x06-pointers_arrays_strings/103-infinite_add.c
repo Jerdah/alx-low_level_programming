@@ -11,59 +11,29 @@
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int u, v, carry = 0;
-	int len1 = 0, len2 = 0;
+	int len1 = 0, len2 = 0, carry = 0, sum, i;
 
-	while (n1[len1] != '\0')
+	while (n1[len1])
 		len1++;
-	while (n2[len2] != '\0')
+	while (n2[len2])
 		len2++;
 
-	if (len1 + 1 > size_r || len2 + 1 > size_r)
+	if (len1 + len2 + 1 > size_r)
 		return (0);
 
-	u = len1 - 1;
-	v = len2 - 1;
-	int w = size_r - 1;
+	r[len1 + len2] = '\0';
 
-	r[w] = '\0';
+	for (i = 1; len1 >= i || len2 >= i || carry; i++)
+	{
+		sum = carry;
+		if (len1 >= i)
+			sum += n1[len1 - i] - '0';
+		if (len2 >= i)
+			sum += n2[len2 - i] - '0';
 
+		carry = sum / 10;
+		r[len1 + len2 - i] = sum % 10 + '0';
+	}
 
-    while (u >= 0 || v >= 0)
-    {
-	    int sum = carry;
-
-	    if (u >= 0)
-		    sum += n1[u] - '0';
-	    if (v >= 0)
-		    sum += n2[v] - '0';
-
-	    carry = sum / 10;
-
-	    if (w <= 0)
-		    return (0);
-
-	    r[w] = (sum % 10) + '0';
-
-	    u--;
-	    v--;
-	    w--;
-    }
-
-    if (carry)
-    {
-	    if (w <= 0)
-		    return (0);
-
-	    r[w] = carry + '0';
-    }
-
-    while (w > 0)
-    {
-	    r[w] = r[w - 1];
-	    k--;
-    }
-
-    return (r);
+	return (r);
 }
-
