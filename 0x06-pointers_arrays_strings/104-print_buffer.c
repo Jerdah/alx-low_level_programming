@@ -2,9 +2,14 @@
 #include <stdio.h>
 
 /**
- * print_buffer: prints the content of size bytes of the buffer pointed by b
+ * print_buffer - prints the content of size bytes of the buffer pointed by b
  * @b: pointer to the buffer
  * @size: size the buffer pointed by b
+ *
+ * Description:
+ * A function that prints a buffer.
+ * Output should print 10 bytes per line
+ * Function must print the content of size bytes of the buffer pointed by b
  *
  * Return: void.
  */
