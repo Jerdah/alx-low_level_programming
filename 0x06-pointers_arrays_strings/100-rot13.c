@@ -16,7 +16,7 @@ char *rot13(char *s)
 	{
 		shift = 'A' + (*current_char & 32);
 		if (('a' <= *current_char && *current_char <= 'z') || ('A' <= *current_char
-				       	&& *current_char <= 'Z'))
+					&& *current_char <= 'Z'))
 			*current_char = (*current_char - shift + 13) % 26 + shift;
 	}
 
