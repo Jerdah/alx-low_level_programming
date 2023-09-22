@@ -27,24 +27,25 @@ void print_buffer(char *b, int size)
 				if (v < size)
 					printf("%.2x", *(b + v));
 				else
-				{
 					printf("  ");
-				}
-				printf(" ");
+			}
 
-				for (w = u; w < u + 10; w++)
+			printf(" ");
+
+			for (w = u; w < u + 10; w++)
+			{
+				if (w >= size)
+					break;
+				if (*(b + w) < 32 || *(b + w) > 126)
+					printf("%c", '.');
+				else
 				{
-					if (w >= size)
-						break;
-					if (*(b + w) < 32 || *(b + w) > 126)
-						printf("%c", '.');
-					else
-					{
-						printf("%c", *(b + w));
-					}
-					printf("\n");
+					printf("%c", *(b + w));
 				}
 			}
+
+			printf("\n");
 		}
 	}
 }
+
