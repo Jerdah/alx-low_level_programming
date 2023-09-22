@@ -14,21 +14,35 @@
  */
 char *leet(char *s)
 {
-	int u;
-	char *p = s;
+	char *v = s;
 
-	while (*s)
+	while (*v)
 	{
-		for (u = 0; "AEOTLaeotl"[u]; u++)
+		switch (*v)
 		{
-			if (*s == "AEOTLaeotl"[u])
-			{
-				*s = "4307104310"[u];
+			case 'a':
+			case 'A':
+				*v = '4';
 				break;
-			}
+			case 'e':
+			case 'E':
+				*v = '3';
+				break;
+			case 'o':
+			case 'O':
+				*v = '0';
+				break;
+			case 't':
+			case 'T':
+				*v = '7';
+				break;
+			case 'l':
+			case 'L':
+				*v = '1';
+				break;
 		}
-		s++;
+		v++;
 	}
 
-	return (p);
+	return (s);
 }
