@@ -8,8 +8,7 @@
  */
 int main(void)
 {
-	char s[] = "Except the best. Prepare for the worst. Capitalize on what come
-		s.\n";
+	char s[] = "Expect the best. Prepare for the worst. Capitalize on what comes.\n";
 	char *p;
 
 	p = leet(s);
