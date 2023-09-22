@@ -14,35 +14,23 @@
  */
 char *leet(char *s)
 {
-	char *v = s;
+	int v;
+	char *p = s;
+	char leetMap[10] = "aAeEoOtTlL";
+	char leetReplace[10] = "4433007711";
 
-	while (*v)
+	while (*s)
 	{
-		switch (*v)
+		for (v = 0; v < 10; v++)
 		{
-			case 'a':
-			case 'A':
-				*v = '4';
+			if (*s == leetMap[v])
+			{
+				*s = leetReplace[v];
 				break;
-			case 'e':
-			case 'E':
-				*v = '3';
-				break;
-			case 'o':
-			case 'O':
-				*v = '0';
-				break;
-			case 't':
-			case 'T':
-				*v = '7';
-				break;
-			case 'l':
-			case 'L':
-				*v = '1';
-				break;
+			}
 		}
-		v++;
+		s++;
 	}
 
-	return (s);
+	return (p);
 }
