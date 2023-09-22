@@ -9,30 +9,16 @@
  */
 char *rot13(char *s)
 {
-	char *p = s;
-	char *rot13Map = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char *rot13Replace = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	char *current_char;
+	char shift;
 
-	while (*s)
+	for (current_char = s; *current_char; ++current_char)
 	{
-		int u = 0;
-		int found = 0;
-
-		while (rot13Map[u])
-		{
-			if (*s == rot13Map[u])
-			{
-				*s = rot13Replace[u];
-				found = 1;
-				break;
-			}
-			u++;
-		}
-
-		if (!found)
-			s++;
+		shift = 'A' + (*current_char & 32);
+		if (('a' <= *current_char && *current_char <= 'z') || ('A' <= *current_char
+				       	&& *current_char <= 'Z'))
+			*current_char = (*current_char - shift + 13) % 26 + shift;
 	}
 
-	return (p);
+	return (s);
 }
-
