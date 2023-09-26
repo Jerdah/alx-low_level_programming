@@ -15,7 +15,5 @@ void print_chessboard(char (*a)[8]);
 void print_diagsums(int *a, int size);
 void set_string(char **s, char *to);
 int _putchar(char c);
-int kstrtouint(const char *s, unsigned int base, unsigned long *res);
-void decrypt_hash(const char *password, const char *hex_key);
 
 #endif /* MAIN_H */
