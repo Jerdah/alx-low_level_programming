@@ -1,4 +1,4 @@
-#include "main.h"
+#include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 
@@ -34,20 +34,12 @@ int is_palindrome_helper(char *s, int k, int v)
 
 	if (is_alphanumeric(s[k]))
 	{
-		return (is_palindrome_helper(s, k + 1, v));
+		return (is_palindrome_helper(s, k + 1, v - 1));
 	}
-
-	if (!is_alphanumeric(s[v]))
+	else
 	{
 		return (is_palindrome_helper(s, k, v - 1));
 	}
-
-	if (tolower(s[k]) != tolower(s[v]))
-	{
-		return (0);
-	}
-
-	return (is_palindrome_helper(s, k + 1, v - 1));
 }
 
 /**
@@ -62,5 +54,4 @@ int is_palindrome(char *s)
 	int len = strlen(s);
 
 	return (is_palindrome_helper(s, 0, len - 1));
-
 }
