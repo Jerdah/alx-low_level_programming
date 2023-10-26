@@ -42,6 +42,11 @@ int is_palindrome_helper(char *s, int k, int v)
 		return (is_palindrome_helper(s, k, v - 1));
 	}
 
+	if (tolower(s[k]) != tolower(s[v]))
+	{
+		return (0);
+	}
+
 	return (is_palindrome_helper(s, k + 1, v - 1));
 }
 
