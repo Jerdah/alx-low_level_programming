@@ -3,18 +3,26 @@
 /**
  * is_prime_number - function determines whether number is a prime number
  * @n: the number to be determined as either prime or not
- * @j: divisor use by is_prime_number to determine wheteher n is prime or not
  *
  * Return: 1 if n is a prime number,
  * otherwise return 0.
  *
  */
-int is_prime_number(int n, int j);
+int is_prime_number(int n)
 {
-	if (n % j == 0)
-		return (0);
-	if (n < j * 2)
-		return (1);
+	int j;
 
-	return (is_prime_number(n, j + 1));
+	if (n <= 1)
+	{
+		return (0);
+	}
+
+	for (j = 2; j <= n / 2; j++)
+	{
+		if (n % j == 0)
+		{
+			return (0);
+		}
+	}
+	return (1);
 }
