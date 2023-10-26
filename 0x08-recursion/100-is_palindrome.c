@@ -1,66 +1,65 @@
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
+#include "main.h"
+
+int string_length(char *s);
+int is_palindrome_check(char *s, int length, int index);
+int is_palindrome(char *s);
 
 /**
- * is_alphanumeric - function checks if a character is an alphanumeric
- * @c: character to be checked
+ * string_length - function checks the length of a string.
+ * @s: string to measure length of
  *
- * Return: 1 if the character is an alphanumeric,
- * otherwise return 0 if character is not an alphanumeric.
+ * Return: The length of the string.
  */
-
-int is_alphanumeric(char c)
+int string_length(char *s)
 {
-	return (isalnum((unsigned char)c));
+	int len = 0;
+
+	if (*(s + len))
+	{
+		len++;
+		len += string_length(s + len);
+	}
+
+	return (len);
 }
 
 /**
- * is_palindrome_helper - function that checks if a string is a palindrome
- * @s: string to be checked
- * @k: starting index
- * @v: ending index
+ * is_palindrome_check - function checks if a string is a palindrome or not.
+ * @s: string to measure length of
+ * @l: length of @s.
+ * @i: index of the string to be checked.
  *
  * Return: 1 if the string is a palindrome,
  * otherwise return 0 if the string is not a palindrome
  */
-
-int is_palindrome_helper(char *s, int k, int v)
+int is_palindrome_check(char *s, int l, int i)
 {
-	if (*s == '\0' || k >= v)
-	{
-		return (1);
-	}
+	if (s[i] == s[l / 2])
 
-	if (is_alphanumeric(s[k]))
-	{
-		return (is_palindrome_helper(s, k + 1, v - 1));
-	}
-	else
-	{
-		return (is_palindrome_helper(s, k, v - 1));
-	}
+		return (1);
+
+	if (s[i] == s[l - i - 1])
+
+		return (is_palindrome_check(s, l, i + 1));
+
+	return (0);
 }
 
 /**
- * is_palindrome - function that checks whether a string is a palindrome or not
- * @s : string to be checked
+ * is_palindrome - function checks if a string is a palindrome or not.
+ * @s: string to measure length of
  *
  * Return: 1 if the string is a palindrome,
  * otherwise return 0 if the string is not a palindrome
  */
 int is_palindrome(char *s)
 {
-	if (*s == '\0')
-	{
+	int i = 0;
+	int l = string_length(s);
+
+	if (!(*s))
+
 		return (1);
-	}
-	else if (*s != tolower(*(s + strlen(s) - 1)))
-	{
-		return (0);
-	}
-	else
-	{
-		return is_palindrome(s + 1);
-	}
+
+	return (is_palindrome_check(s, l, i));
 }
