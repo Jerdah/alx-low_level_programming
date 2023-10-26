@@ -63,7 +63,6 @@ int _strncmp(char *s1, char *s2, unsigned int n)
 }
 
 /**
- * @wild_prev: pointer to previous wildcard
  * _wildcmp - compares two strings to check whether they are identical.
  * @s1: first string to compare.
  * @s2: second string that can contain '*'
