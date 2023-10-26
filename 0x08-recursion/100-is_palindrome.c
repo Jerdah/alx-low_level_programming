@@ -34,11 +34,22 @@ int is_palindrome_helper(char *s, int k, int v)
 
 	if (is_alphanumeric(s[k]))
 	{
-		return (is_palindrome_helper(s, k + 1, v - 1));
+		return (is_palindrome_helper(s, k + 1, v));
 	}
-	else
+
+	else if (!is_alphanumeric(s[v]))
 	{
 		return (is_palindrome_helper(s, k, v - 1));
+	}
+
+	else if (tolower(s[k]) != tolower(s[v]))
+	{
+		return (0);
+	}
+
+	else
+	{
+		return (is_palindrome_helper(s, k + 1, v - 1));
 	}
 }
 
@@ -51,17 +62,7 @@ int is_palindrome_helper(char *s, int k, int v)
  */
 int is_palindrome(char *s)
 {
-	if (*s == '\0')
-	{
-		return (1);
-	}
-	else
-		if(*s != tolower(*(s + strlen(s) - 1)))
-		{
-			return (0);
-		}
-		else
-		{
-			return (is_palindrome(s + 1));
-		}
+	int len = strlen(s);
+
+	return (is_palindrome_helper(s, 0, len - 1));
 }
