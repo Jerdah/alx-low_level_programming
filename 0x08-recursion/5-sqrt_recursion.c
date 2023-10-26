@@ -8,13 +8,13 @@
  * Return: natural square root of n,
  * otherwise -1 if n has no natural square root
  */
-int _sqrt (int n, int j)
+int _sqrt(int n, int j)
 {
 	if (j * j > n)
 		return (-1);
 	if (j * j == n)
 		return (j);
-	return _sqrt(n, j + 1);
+	return (_sqrt(n, j + 1));
 }
 
 /**
