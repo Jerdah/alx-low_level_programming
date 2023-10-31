@@ -13,14 +13,15 @@
  */
 int main(int argc, char *argv[])
 {
+	int sum = 0;
+	int v;
+
 	if (argc == 1)
 	{
 		printf("0\n");
 		return (0);
 	}
 
-	int sum = 0;
-	int v;
 
 	for (v = 1; v < argc; v++)
 
