@@ -1,6 +1,6 @@
 ## 0x07. C - Even more pointers, arrays and strings
 
-## ## Resources
+## Resources
 
 ### Read or watch:
 
