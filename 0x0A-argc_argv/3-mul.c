@@ -12,18 +12,17 @@
  */
 int main(int argc, char *argv[])
 {
-	if (argc == 3)
+	if (argc != 3)
 	{
-		int n1 = atoi(argv[1]);
-		int n2 = atoi(argv[2);
-		int product = n * n2;
+		printf("Error: Provide two integer arguments.\n")
+			return (1);
+	}
 
-		printf("%d\n", product);
-	}
-	else
-	{
-		printf("Error\n");
-		return (1);
-	}
+	int n1 = atoi(argv[1]);
+	int n2 = atoi(argv[2]);
+	int product = n1 * n2;
+
+	printf("%d\n", product);
+
 	return (0);
 }
