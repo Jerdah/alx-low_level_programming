@@ -1,23 +1,20 @@
-#include "main.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 /**
- * malloc checked - allocates memory
- * @b: the number of bytes to allocate
+ * malloc_checked - function allocates dynamic memory using malloc
+ * @b: number of bytes to allocate
  *
- * Return: address of the first byte of memory allocated
- * Otherwise,return a status value of 98.
+ * Return: On success return a pointer to the newly allocated memory.
  */
-
 void *malloc_checked(unsigned int b)
 {
-	void *t;
+	void *p;
 
-       	t = malloc(b);
-
-	if (t == NULL)
+	p = malloc(b);
+	if (p)
 	{
 		exit(98);
 	}
-
-	return (t);
+	return (p);
 }
