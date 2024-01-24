@@ -7,32 +7,52 @@
  * string_nconcat - function concatenates two strings
  * @s1: first string
  * @s2: second string
- * @n: maximum no. of bytes to use from the second string
+ * @n: max no. of bytes to use from the second string
  *
- * Return: On succes, return a pointer to the character of the new string,
+ * Return: On success, return a pointer to the character of the new string
  * Else, return NULL
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	char *res;
-	size_t len_s1, len_s2;
+	char *result;
+	unsigned int i, k;
+	unsigned int len_s1 = 0;
+	unsigned int len_s2 = 0;
 
-	if (!s1 || !s2)
+	if (s1 != NULL)
+	{
+		while (s1[len_s1] != '\0')
+		{
+			len_s1++;
+		}
+	}
+
+	if (s2 != NULL)
+	{
+		while (s2[len_s2] != '\0' && len_s2 < n)
+		{
+			len_s2++;
+		}
+	}
+
+	result = malloc((len_s1 + len_s2 + 1) * sizeof(char));
+	if (result == NULL)
+	{
 		return (NULL);
+	}
 
-	len_s1 = strlen(s1);
-	len_s2 = strlen(s2);
+	for (i = 0; i < len_s1; i++)
+	{
+		result[i] = s1[i];
+	}
 
-	if (n >= len_s2)
-		n = len_s2;
+	for (k = 0; k < len_s2; k++)
+	{
+		result[len_s1 + k] = s2[k];
+	}
 
-	res = malloc(len_s1 + n + 1);
-	if (!res)
-		return (NULL);
+	result[len_s1 + len_s2] = '\0';
 
-	memcpy(res, s1, len_s1);
-	memcpy(res + len_s1, s2, n);
-	res[len_s1 + n] = '\0';
-
-	return (res);
+	return (result);
 }
+
