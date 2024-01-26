@@ -51,7 +51,6 @@ int print_str(va_list args)
 /**
  * print_all - functions prints anything
  * @format: string of characters representing the type of each argument
- * @n: no. of arguments that follow the format string in the
  * variable argument list
  *
  */
