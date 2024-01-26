@@ -2,7 +2,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 
 /**
  * is_numeric - function checks if a string is numeric
@@ -12,18 +11,21 @@
  *
  */
 
-int is_numeric(const char *str)
+int is_numeric(char *str)
 {
-	while (*str != '\0')
+	int i = 0;
+
+	while (str[i])
 	{
-		if (!isdigit(*str))
+		if (str[i] < '0' || str[i] > '9')
 		{
 			return (0);
 		}
-		str++;
+		i++;
 	}
 	return (1);
 }
+
 
 /**
  * main - Entry point
