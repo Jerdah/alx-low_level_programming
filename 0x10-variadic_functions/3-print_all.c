@@ -58,52 +58,32 @@ int print_str(va_list args)
 void print_all(const char * const format, ...)
 {
 	va_list args;
-	unsigned int i = 0;
-	unsigned int j = 0;
+	print_fn_t fn_list[] = {
+		{'c', print_char},
+		{'f', print_float},
+		{'i', print_int},
+		{'s', print_str},
+		{ 0,  NULL}
+	};
+	char *sep[] = {"", ", "};
+	unsigned int bytes = 0, fn_index = 0, format_index = 0;
 
 	va_start(args, format);
-
-	while (format && format[i])
+	while (format && format[format_index])
 	{
-		switch (format[i++])
+		fn_index = 0;
+		while (fn_list[fn_index].format)
 		{
-			case 'c':
-				{
-					char c = (char) va_arg(args, int);
-
-					printf("%c, ", c);
-					break;
-				}
-			case 'i':
-				{
-					int n = va_arg(args, int);
-
-					printf("%d, ", n);
-					break;
-				}
-			case 'f':
-				{
-					double f = va_arg(args, double);
-
-					printf("%f, ", f);
-					break;
-				}
-			case 's':
-				{
-					char *s = va_arg(args, char *);
-
-					if (!s)
-						printf("(nil), ");
-					else
-						printf("%s, ", s);
-					break;
-				}
-			default:
+			if (format[format_index] == fn_list[fn_index].format)
+			{
+				printf("%s", sep[bytes != 0]);
+				bytes += fn_list[fn_index].fn(args);
 				break;
+			}
+			++fn_index;
 		}
-		j++;
+		++format_index;
 	}
-
-	va_end(args);
 	printf("\n");
+	va_end(args);
 }
