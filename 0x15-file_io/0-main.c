@@ -4,8 +4,8 @@
 
 /**
  * main - check the code
- * @ac: Number of command-line arguments
- * @av: Array of command-line arguments
+ * @ac: no of command-line arguments
+ * @av: array of command-line arguments
  *
  * Return: Always 0.
  */
