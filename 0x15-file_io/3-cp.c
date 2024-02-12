@@ -1,67 +1,143 @@
 #include <fcntl.h>
-#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
-#define BUFFER_SIZE 1024
+#define BUFSIZE 1024
 
 /**
- * print_error - funcn prints an error message to stderr and exits with a code
- * @code: the exit code
- * @file: filename associated with the error
+ * _close - Close a file descriptor and handle errors
+ * @fd: The file descriptor to close
+ *
+ * Return: 0 on success, -1 on failure
  */
-void print_error(int code, const char *file)
+int _close(int fd)
 {
-	fprintf(stderr, "Error: Can't ");
-	if (code == 97)
-		fprintf(stderr, "read from file %s\n", file);
-	else if (code == 99)
-		fprintf(stderr, "write to %s\n", file);
-	else if (code == 100)
-		fprintf(stderr, "close fd %s\n", file);
-
-	exit(code);
+	if (!close(fd))
+		return (0);
+	dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+	return (-1);
 }
 
 /**
- * main - Entry point
- * @argc: no of command-line arguments
- * @argv: Array of command-line arguments
+ * _read - Read from a file and handle errors
+ * @filename: The name of the file to read from
+ * @fd: The file descriptor to read from
+ * @buf: The buffer to write to
+ * @count: The number of bytes to read
  *
- * Return: 0 on success,
- * Else, return 97 on incorrect no of arguments,
- * Else, return 98 if file_from cannot be read,
- * Else, return 99 if file_to cannot be written,
- * Else, 100 if file descriptor cannot be closed
+ * Return: The number of bytes read or -1 on failure
  */
-int main(int argc, char *argv[])
+ssize_t _read(const char *filename, int fd, char *buf, size_t count)
 {
-	int fd_from, fd_to, read_result, write_result;
-	char buffer[BUFFER_SIZE];
+	ssize_t bytes_read = read(fd, buf, count);
+
+	if (bytes_read > -1)
+		return (bytes_read);
+
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
+	return (-1);
+}
+
+/**
+ * _write - Write to a file and handle errors
+ * @filename: The name of the file to write to
+ * @fd: The file descriptor to write to
+ * @buf: The buffer to read from
+ * @count: The number of bytes to write
+ *
+ * Return: The number of bytes written or -1 on failure
+ */
+ssize_t _write(const char *filename, int fd, const char *buf, size_t count)
+{
+	ssize_t bytes_written = write(fd, buf, count);
+
+	if (bytes_written > -1)
+		return (bytes_written);
+
+	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename);
+	return (-1);
+}
+
+/**
+ * print_error - Print error message with proper format
+ * @code: The error code
+ * @file: The filename associated with the error
+ */
+void print_error(int code, const char *file)
+{
+	switch (code)
+	{
+		case 97:
+			dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+			break;
+		case 98:
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file);
+			break;
+		case 99:
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file);
+			break;
+		case 100:
+			dprintf(STDERR_FILENO, "Error: Can't close fd\n");
+			break;
+		default:
+			break;
+	}
+}
+
+/**
+ * main - copies the contents of one file to another
+ * @argc: argument count
+ * @argv: argument values
+ *
+ * Return: Always 1
+ */
+int main(int argc, const char *argv[])
+{
+	int fd_in, fd_out;
+	ssize_t bytes_read;
+	char buffer[BUFSIZE];
 
 	if (argc != 3)
-		print_error(97, NULL);
-
-	fd_from = open(argv[1], O_RDONLY);
-	if (fd_from == -1)
-		print_error(98, argv[1]);
-
-	fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
-	if (fd_to == -1)
-		print_error(99, argv[2]);
-
-	while ((read_result = read(fd_from, buffer, BUFFER_SIZE)) > 0)
 	{
-		write_result = write(fd_to, buffer, read_result);
-		if (write_result == -1 || write_result != read_result)
-			print_error(99, argv[2]);
+		print_error(97, NULL);
+		exit(97);
 	}
 
-	if (read_result == -1)
+	fd_in = open(argv[1], O_RDONLY);
+	if (fd_in < 0)
+	{
 		print_error(98, argv[1]);
+		exit(98);
+	}
 
-	if (close(fd_from) == -1 || close(fd_to) == -1)
-		print_error(100, NULL);
+	fd_out = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	if (fd_out < 0)
+	{
+		print_error(99, argv[2]);
+		_close(fd_in);
+		exit(99);
+	}
+
+	while ((bytes_read = _read(argv[1], fd_in, buffer, BUFSIZE)))
+	{
+		if (bytes_read < 0)
+		{
+			_close(fd_in);
+			_close(fd_out);
+			exit(98);
+		}
+
+		if (_write(argv[2], fd_out, buffer, bytes_read) < 0)
+		{
+			_close(fd_in);
+			_close(fd_out);
+			exit(99);
+		}
+	}
+
+	if ((_close(fd_in) | _close(fd_out)) < 0)
+		exit(100);
 
 	return (0);
 }
