@@ -72,13 +72,13 @@ void print_error(int code, const char *file)
 			dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 			break;
 		case 98:
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file);
+			dprintf(STDERR_FILENO, "Error: Cannot read from file %s\n", file);
 			break;
 		case 99:
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file);
+			dprintf(STDERR_FILENO, "Error: Cannot write to %s\n", file);
 			break;
 		case 100:
-			dprintf(STDERR_FILENO, "Error: Can't close fd\n");
+			dprintf(STDERR_FILENO, "Error: Cannot close fd\n");
 			break;
 		default:
 			break;
