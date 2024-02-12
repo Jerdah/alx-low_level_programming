@@ -6,9 +6,27 @@
 #define BUFFER_SIZE 1024
 
 /**
+ * print_error - funcn prints an error message to stderr and exits with a code
+ * @code: the exit code
+ * @file: filename associated with the error
+ */
+void print_error(int code, const char *file)
+{
+	fprintf(stderr, "Error: Can't ");
+	if (code == 97)
+		fprintf(stderr, "read from file %s\n", file);
+	else if (code == 99)
+		fprintf(stderr, "write to %s\n", file);
+	else if (code == 100)
+		fprintf(stderr, "close fd %s\n", file);
+
+	exit(code);
+}
+
+/**
  * main - Entry point
- * @ac: no of command-line arguments
- * @av: Array of command-line arguments
+ * @argc: no of command-line arguments
+ * @argv: Array of command-line arguments
  *
  * Return: 0 on success,
  * Else, return 97 on incorrect no of arguments,
@@ -16,26 +34,6 @@
  * Else, return 99 if file_to cannot be written,
  * Else, 100 if file descriptor cannot be closed
  */
-void print_error(int code, const char *file)
-{
-	switch (code)
-	{
-		case 97:
-			dprintf(2, "Usage: cp file_from file_to\n");
-			break;
-		case 98:
-			dprintf(2, "Error: Can't read from file %s\n", file);
-			break;
-		case 99:
-			dprintf(2, "Error: Can't write to %s\n", file);
-			break;
-		case 100:
-			dprintf(2, "Error: Can't close fd %s\n", file);
-			break;
-	}
-	exit(code);
-}
-
 int main(int argc, char *argv[])
 {
 	int fd_from, fd_to, read_result, write_result;
