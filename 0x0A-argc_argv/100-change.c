@@ -3,17 +3,14 @@
 
 /**
  * main - Entry point
+ * @argc: Argument count
+ * @argv: Argument vector
  *
- * @argc: count of command line arguments
- * @argv: array of argument strings
- *
- * Return: 0 (Success),
- * otherwise, 1 (Error)
+ * Return: 0 on success, 1 on error
  */
 int main(int argc, char *argv[])
 {
-	int num, v, result;
-	int coins[] = {25, 10, 5, 2, 1};
+	int cents, coins = 0;
 
 	if (argc != 2)
 	{
@@ -21,23 +18,35 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 
-	num = atoi(argv[1]);
-	result = 0;
+	cents = atoi(argv[1]);
 
-	if (num < 0)
+	if (cents < 0)
 	{
 		printf("0\n");
 		return (0);
 	}
 
-	for (v = 0; v < 5 && num >= 0; v++)
+	while (cents > 0)
 	{
-		while (num >= coins[v])
-		{
-			result++;
-			num -= coins[v];
-		}
+		if 
+			(cents >= 25)
+				cents -= 25;
+		else if 
+			(cents >= 10)
+				cents -= 10;
+		else if
+			(cents >= 5)
+				cents -= 5;
+		else if
+			(cents >= 2)
+				cents -= 2;
+		else
+			cents -= 1;
+
+		coins++;
 	}
+
+	printf("%d\n", coins);
 
 	return (0);
 }
