@@ -28,10 +28,10 @@ int main(int argc, char *argv[])
 
 	while (cents > 0)
 	{
-		if 
+		if
 			(cents >= 25)
 				cents -= 25;
-		else if 
+		else if
 			(cents >= 10)
 				cents -= 10;
 		else if
