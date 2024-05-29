@@ -1,4 +1,4 @@
-# 100-Makefile
+# 100-Makefile for school
 
 NAME = school
 CC = gcc
@@ -7,6 +7,7 @@ SRC = $(wildcard *.c)
 OBJ = $(SRC:.c=.o)
 RM = rm -f
 HEADER = m.h
+
 
 .PHONY: all clean fclean oclean re
 
@@ -19,7 +20,7 @@ $(NAME): $(OBJ)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@$(RM) *~
+	@$(RM) $(NAME)
 
 oclean:
 	@$(RM) $(OBJ)
