@@ -12,7 +12,7 @@ $(NAME): $(SRC)
 	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
-	$(RM) *.o *~ \#*\#
+	$(RM) $(NAME) *~
 
 oclean:
 	$(RM) *.o
@@ -22,4 +22,3 @@ fclean: oclean clean
 re: fclean all
 
 .PHONY: all clean oclean fclean re
-
