@@ -1,32 +1,23 @@
 # 0-Makefile for school
 
-# Compiler
 CC = gcc
 
-# Compiler flags
 CFLAGS = -Wall -Wextra -Werror
 
-# Source files
 SRCS = main.c school.c
 
-# Object files
 OBJS = $(SRCS:.c=.o)
 
-# Executable name
 EXECUTABLE = school
 
-# Default target
 all: $(EXECUTABLE)
 
-# Build the executable
 $(EXECUTABLE): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(EXECUTABLE)
 
-# Compile source files
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Clean up object files and executable
 clean:
 	rm -f $(OBJS) $(EXECUTABLE)
 

@@ -1,4 +1,4 @@
-# 3-Makefile for school
+# 4-Makefile for school
 
 CC = gcc
 
@@ -10,13 +10,15 @@ NAME = school
 
 RM = rm -f
 
+CFLAGS = -Wall -Werror -Wextra -pedantic
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
 
 %.o: %.c
-	$(CC) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) *~ $(NAME)

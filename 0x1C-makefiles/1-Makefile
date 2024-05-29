@@ -1,20 +1,15 @@
 # 1-Makefile for school
 
-# Compiler
 CC = gcc
 
-# Source files
 SRC = main.c school.c
 
-# Executable name
 EXECUTABLE = school
 
 RM = rm -f
 
-# Default target
 all: $(EXECUTABLE)
 
-# Build the executable
 $(EXECUTABLE): $(SRC)
 	$(CC) $(SRC) -o $(EXECUTABLE)
 
