@@ -11,24 +11,19 @@ HEADERS = m.h
 
 NAME = school
 
+.PHONY: all clean oclean fclean re
+
 all: $(NAME)
 
-$(NAME):
-	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+$(NAME): $(OBJ) $(HEADERS)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 clean:
-	@$(RM) $(NAME) *.o *~ 2> /dev/null || true
+	$(RM) $(NAME) $(TMPFILES)
 
-oclean: clean all
+oclean:
+	$(RM) $(OBJ)
 
-%.o: %.c
-	@$(RM) $(NAME) 2> /dev/null || true
-	@echo "This script has an error." >&2; exit 1
+fclean: clean oclean
 
-fclean: clean
-	@$(RM) $(NAME) 2> /dev/null || true
-
-$(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-
-include $(wildcard *.h)
+re: fclean all
