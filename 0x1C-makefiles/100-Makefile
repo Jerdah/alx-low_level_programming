@@ -1,29 +1,31 @@
 # 100-Makefile
 
-CC = gcc
-
-CFLAGS = -Wall -Wextra -Werror
-
-SRC = main.c school.c
-OBJ = $(SRC:.c=.o)
-
-HEADERS = m.h
-
 NAME = school
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra -pedantic
+SRC = $(wildcard *.c)
+OBJ = $(SRC:.c=.o)
+RM = rm -f
+HEADER = m.h
 
-.PHONY: all clean oclean fclean re
+.PHONY: all clean fclean oclean re
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(HEADERS)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+$(NAME): $(OBJ)
+	@$(CC) $(OBJ) -o $(NAME)
+
+%.o: %.c
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(NAME) $(TMPFILES)
+	@$(RM) *~
 
 oclean:
-	$(RM) $(OBJ)
+	@$(RM) $(OBJ)
 
 fclean: clean oclean
+	@$(RM) $(NAME)
 
 re: fclean all
+
