@@ -1,12 +1,13 @@
-# 100-Makefile for school
+# 100-Makefile
 
 CC = gcc
 
+CFLAGS = -Wall -Wextra -Werror
+
 SRC = main.c school.c
+OBJ = $(SRC:.c=.o)
 
 NAME = school
-
-CFLAGS = -Wall -Werror -Wextra -pedantic
 
 all: $(NAME)
 
@@ -14,13 +15,18 @@ $(NAME):
 	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 
 clean:
-	@$(RM) *~ $(NAME)
+	@$(RM) $(NAME) *.o *~ 2> /dev/null || true
 
-oclean:
-	@$(RM) $(OBJ)
+oclean: clean all
 
-fclean: clean oclean
+%.o: %.c
+	@$(RM) $(NAME) 2> /dev/null || true
+	@echo "This script has an error." >&2; exit 1
 
-re: oclean all
+fclean: clean
+	@$(RM) $(NAME) 2> /dev/null || true
 
-.PHONY: all clean oclean fclean re
+$(NAME): $(OBJ)
+	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+
+include $(wildcard *.h)
