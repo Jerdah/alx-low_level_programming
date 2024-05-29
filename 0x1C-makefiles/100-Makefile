@@ -1,32 +1,25 @@
 # 100-Makefile for school
 
-NAME = school
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -pedantic
-SRC = main.c school.c
-OBJ = $(SRC:.c=.o)
+SRC = main.c
+NAME = school
 RM = rm -f
-HEADER = m.h
-
-
-.PHONY: all clean fclean oclean re
+CFLAGS = -Wall -Werror -Wextra -pedantic
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	@$(CC) $(OBJ) -o $(NAME)
-
-%.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
+$(NAME): $(SRC)
+	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
-	@$(RM) $(NAME)
+	$(RM) *.o *~ \#*\#
 
 oclean:
-	@$(RM) $(OBJ)
+	$(RM) *.o
 
-fclean: clean oclean
-	@$(RM) $(NAME)
+fclean: oclean clean
 
 re: fclean all
+
+.PHONY: all clean oclean fclean re
 
