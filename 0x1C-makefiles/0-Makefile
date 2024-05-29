@@ -1,4 +1,4 @@
-# 0-Makefile
+# 0-Makefile for school
 
 # Compiler
 CC = gcc

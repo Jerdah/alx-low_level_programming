@@ -1,0 +1,40 @@
+# 3-Makefile for school
+
+# Compiler
+CC = gcc
+
+# Source files
+SRC = main.c school.c
+
+# Object files
+OBJ = $(SRC:.c=.o)
+
+# Executable name
+NAME = school
+
+# Delete program
+RM = rm -f
+
+# Default target
+all: $(NAME)
+
+# Build the executable
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
+
+# Compile source files
+%.o: %.c
+	$(CC) -c $< -o $@
+
+# Clean up
+clean:
+	$(RM) *~ $(NAME)
+
+oclean:
+	$(RM) $(OBJ)
+
+fclean: clean oclean
+
+re: fclean all
+
+.PHONY: all clean oclean fclean re
